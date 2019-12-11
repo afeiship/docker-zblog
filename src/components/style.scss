@@ -1,7 +1,13 @@
 $react-tree-options: () !default;
 
 .react-tree {
-  &__item{
-    background: #eee;
+  .is-node {
+    margin-left: 20px;
+  }
+
+  &.is-root {
+    > .is-node {
+      margin-left: 0;
+    }
   }
 }

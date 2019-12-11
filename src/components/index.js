@@ -10,14 +10,18 @@ import nxTreeWalk from '@feizheng/next-tree-walk';
 const CLASS_NAME = 'react-tree';
 const DEFAULT_TEMPLATE = ({ item, independent }, cb) => {
   if (independent) {
-    return <li key={item.value} className={`${CLASS_NAME}__item is-item`}>{item.label}</li>
+    return (
+      <li key={item.value} className='is-node is-leaf'>
+        <label className={'is-label'}>{item.label}</label>
+      </li>
+    )
   } else {
     return (
-      <li className={`${CLASS_NAME}__item is-parent is-item`}>
-        <li key={item.value} className={`${CLASS_NAME}__item is-item`}>
+      <li key={item.value} className={'is-node'}>
+        <label className='is-label'>
           {item.label}
-        </li>
-        <ul className="is-list">
+        </label>
+        <ul className="is-nodes">
           {cb()}
         </ul>
       </li>
