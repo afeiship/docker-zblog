@@ -18,23 +18,24 @@ li {
 @import "@/components/style.scss";
 
 .app-container {
-  padding: 50px;
-  .button {
-    background: #3cc51f;
-    width: 100%;
-    display: block;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    color: #fff;
-    padding: 20px;
-    border: none;
+  .react-tree {
+    margin: 50px;
+    border: 3px dashed gray;
+  }
 
-    &:active {
-      background: darken(#3cc51f, 10%);
+  // common styles
+  .react-tree {
+    .is-node {
+      margin-left: 20px;
+      &[collapsed] {
+        .is-branch {
+          display: none;
+        }
+      }
     }
 
-    &:focus {
-      outline: none;
+    > .is-node {
+      margin-left: 0;
     }
   }
 }

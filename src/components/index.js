@@ -6,43 +6,35 @@ import noop from '@feizheng/noop';
 import objectAssign from 'object-assign';
 import nxTreeWalk from '@feizheng/next-tree-walk';
 
-
 const CLASS_NAME = 'react-tree';
-const DEFAULT_TEMPLATE = ({ item, independent }, cb) => {
-  if (independent) {
-    return (
-      <li key={item.value} className='is-node is-leaf'>
-        <label className={'is-label'}>{item.label}</label>
-      </li>
-    )
-  } else {
-    return (
-      <li key={item.value} className={'is-node'}>
-        <label className='is-label'>
-          {item.label}
-        </label>
-        <ul className="is-nodes">
-          {cb()}
-        </ul>
-      </li>
-    )
-  }
-};
 
-export default class extends Component {
+export default class ReactTree extends Component {
   static displayName = CLASS_NAME;
+  static version = '__VERSION__';
   static propTypes = {
+    /**
+     * The extended className for component.
+     */
     className: PropTypes.string,
+    /**
+     * The data source.
+     */
     items: PropTypes.array,
+    /**
+     * Item template.
+     */
     template: PropTypes.func,
+    /**
+     * Child item key.
+     */
     itemsKey: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.func
-    ]),
+    ])
   };
 
   static defaultProps = {
-    template: DEFAULT_TEMPLATE,
+    template: noop,
     itemsKey: 'children'
   };
 
@@ -51,7 +43,7 @@ export default class extends Component {
     return nxTreeWalk(items, {
       template,
       itemsKey
-    })
+    });
   }
 
   render() {
@@ -59,7 +51,8 @@ export default class extends Component {
     return (
       <ul
         data-component={CLASS_NAME}
-        className={classNames('is-root', CLASS_NAME, className)}
+        data-role="root"
+        className={classNames(CLASS_NAME, className)}
         {...props}>
         {this.childView}
       </ul>

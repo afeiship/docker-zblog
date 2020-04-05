@@ -3,9 +3,25 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import './assets/style.scss';
 
+const template = ({ item, independent }, cb) => {
+  if (independent) {
+    return (
+      <li key={item.value} className="is-node is-leaf">
+        <label className={'is-label'}>{item.label}</label>
+      </li>
+    );
+  } else {
+    return (
+      <li key={item.value} className={'is-node'}>
+        <label className="is-label">{item.label}</label>
+        <ul className="is-nodes">{cb()}</ul>
+      </li>
+    );
+  }
+};
+
 class App extends React.Component {
   state = {
-    value: ['m1-1-2'],
     items: [
       {
         icon: 'm1-icon',
@@ -49,10 +65,11 @@ class App extends React.Component {
       }
     ]
   };
+
   render() {
     return (
       <div className="app-container">
-        <ReactTree items={this.state.items} />
+        <ReactTree template={template} items={this.state.items} />
       </div>
     );
   }

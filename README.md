@@ -5,12 +5,20 @@
 ```shell
 npm install -S @feizheng/react-tree
 ```
+
+## update
+```shell
+npm update @feizheng/react-tree
+```
+
 ## properties
-| property        | type | description |
-| --------------- | ---- | ----------- |
-| className       | -    | -           |
-| value           | -    | -           |
-| onChange        | -    | -           |
+| Name      | Type   | Required | Default    | Description                           |
+| --------- | ------ | -------- | ---------- | ------------------------------------- |
+| className | string | false    | -          | The extended className for component. |
+| items     | array  | false    | -          | The data source.                      |
+| template  | func   | false    | noop       | Item template.                        |
+| itemsKey  | union  | false    | 'children' | Child item key.                       |
+
 
 ## usage
 1. import css
@@ -22,35 +30,86 @@ npm install -S @feizheng/react-tree
   ```
 2. import js
   ```js
-  import React from 'react';
-  import ReactDOM from 'react-dom';
   import ReactTree from '@feizheng/react-tree';
-  
-  // your app:
-  class App extends React.Component{
-    render(){
+  import ReactDOM from 'react-dom';
+  import React from 'react';
+  import './assets/style.scss';
+
+  const template = ({ item, independent }, cb) => {
+    if (independent) {
       return (
-        <ReactTree />
-      )
+        <li key={item.value} className="is-node is-leaf">
+          <label className={'is-label'}>{item.label}</label>
+        </li>
+      );
+    } else {
+      return (
+        <li key={item.value} className={'is-node'}>
+          <label className="is-label">{item.label}</label>
+          <ul className="is-nodes">{cb()}</ul>
+        </li>
+      );
+    }
+  };
+
+  class App extends React.Component {
+    state = {
+      items: [
+        {
+          icon: 'm1-icon',
+          label: 'Menu1',
+          value: 'm1',
+          children: [
+            {
+              icon: 'm1-1-icon',
+              label: 'Menu1-1',
+              value: 'm1-1',
+              children: [
+                {
+                  icon: 'm1-1-1-icon',
+                  label: 'Menu-1-1',
+                  value: 'm1-1-1'
+                },
+                {
+                  icon: 'm1-1-2-icon',
+                  label: 'Menu-1-2',
+                  value: 'm1-1-2'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          icon: 'm2-icon',
+          label: 'Menu2',
+          value: 'm2'
+        },
+        {
+          icon: 'mxx-icon',
+          label: '-',
+          value: '-'
+        },
+        {
+          disabled: false,
+          icon: 'm3-icon',
+          label: 'Menu3',
+          value: 'm3'
+        }
+      ]
+    };
+
+    render() {
+      return (
+        <div className="app-container">
+          <ReactTree template={template} items={this.state.items} />
+        </div>
+      );
     }
   }
 
-  // render to dom:
-  ReactDOM.render(<App/>, document.getElementById('app'));
+  ReactDOM.render(<App />, document.getElementById('app'));
+
   ```
 
 ## documentation
 - https://afeiship.github.io/react-tree/
-
-## resources
-- https://www.robinwieruch.de/minimal-react-webpack-babel-setup/
-- https://www.valentinog.com/blog/react-webpack-babel/
-- https://jestjs.io/docs/en/tutorial-react#snapshot-testing-with-mocks-enzyme-and-react-16
-- https://testing-library.com/docs/react-testing-library/api
-
-## todos
-- [ ] Add: semver number for every build files.
-- [ ] Add: need output css files.
-- [ ] Add: PWA support for docs.
-- [ ] Add: source.map file for dist(`you can upload for production debug`).
-- [ ] BUG: npm run dev will clean dist.
