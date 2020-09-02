@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import noop from '@feizheng/noop';
-import objectAssign from 'object-assign';
 import nxTreeWalk from '@feizheng/next-tree-walk';
+import noop from '@feizheng/noop';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
 const CLASS_NAME = 'react-tree';
 
@@ -27,10 +25,7 @@ export default class ReactTree extends Component {
     /**
      * Child item key.
      */
-    itemsKey: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.func
-    ])
+    itemsKey: PropTypes.oneOfType([PropTypes.string, PropTypes.func])
   };
 
   static defaultProps = {

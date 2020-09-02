@@ -1,6 +1,6 @@
-import ReactTree from '../src/main';
-import ReactDOM from 'react-dom';
 import React from 'react';
+import ReactDOM from 'react-dom';
+import ReactTree from '../src/main';
 import './assets/style.scss';
 
 const template = ({ item, independent }, cb) => {

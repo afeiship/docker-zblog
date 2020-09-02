@@ -1,22 +1,22 @@
-import baseConfig from './base';
-import merge from 'webpack-merge';
 import {
-  configs,
+  externals,
   inputs,
   outputs,
-  loaders,
-  plugins,
-  externals
+  plugins
 } from '@feizheng/webpack-lib-kits';
+import merge from 'webpack-merge';
+import baseConfig from './base';
 
 export default merge(baseConfig, {
   entry: inputs.build(),
   output: outputs.build({
     library: 'ReactTree'
   }),
-  externals: externals.base({
-    '@feizheng/noop': '@feizheng/noop',
-    '@feizheng/next-tree-walk': '@feizheng/next-tree-walk'
-  }),
-  plugins: [plugins.clean(), plugins.copyStyles()]
+  devtool: 'source-map',
+  externals: externals.node(),
+  plugins: [
+    plugins.banner(),
+    plugins.clean(),
+    plugins.copyStyles(),
+  ]
 });
