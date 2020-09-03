@@ -13,10 +13,8 @@ export default merge(baseConfig, {
     library: 'ReactTree'
   }),
   devtool: 'source-map',
-  externals: externals.node(),
-  plugins: [
-    plugins.banner(),
-    plugins.clean(),
-    plugins.copyStyles(),
-  ]
+  externals: externals.base({
+    '@feizheng/next-tree-walk': '@feizheng/next-tree-walk'
+  }),
+  plugins: [plugins.banner(), plugins.clean(), plugins.copyStyles()]
 });
