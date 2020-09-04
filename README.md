@@ -43,16 +43,16 @@ npm update @feizheng/react-tree
   const template = ({ item, independent }, cb) => {
     if (independent) {
       return (
-        <li key={item.value} className="is-node is-leaf">
+        <div key={item.value} className="is-node is-leaf">
           <label className={'is-label'}>{item.label}</label>
-        </li>
+        </div>
       );
     } else {
       return (
-        <li key={item.value} className={'is-node'}>
+        <div key={item.value} className={'is-node'}>
           <label className="is-label">{item.label}</label>
-          <ul className="is-nodes">{cb()}</ul>
-        </li>
+          <div className="is-nodes">{cb()}</div>
+        </div>
       );
     }
   };

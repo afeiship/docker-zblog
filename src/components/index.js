@@ -44,13 +44,13 @@ export default class ReactTree extends Component {
   render() {
     const { className, items, itemsKey, template, ...props } = this.props;
     return (
-      <ul
+      <div
         data-component={CLASS_NAME}
         data-role="root"
         className={classNames(CLASS_NAME, className)}
         {...props}>
         {this.childView}
-      </ul>
+      </div>
     );
   }
 }
