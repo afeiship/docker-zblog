@@ -75,8 +75,9 @@
     "react-dom": "^16.13.1"
   },
   "dependencies": {
-    "@feizheng/next-tree-walk": "^1.0.5",
-    "@feizheng/noop": "^1.0.0",
+    "@jswork/next": "^1.0.5",
+    "@jswork/next-tree-walk": "^1.0.0",
+    "@jswork/noop": "^1.0.0",
     "classnames": "^2.2.6",
     "object-assign": "^4.1.1",
     "prop-types": "^15.7.2"

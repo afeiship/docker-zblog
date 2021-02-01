@@ -1,5 +1,5 @@
-import nxTreeWalk from '@feizheng/next-tree-walk';
-import noop from '@feizheng/noop';
+import nxTreeWalk from '@jswork/next-tree-walk';
+import noop from '@jswork/noop';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
