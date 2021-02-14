@@ -21,7 +21,10 @@
   },
   "keywords": [
     "react",
-    "tree"
+    "tree",
+    "nested",
+    "tree-data",
+    "json"
   ],
   "author": "afei",
   "license": "MIT",
