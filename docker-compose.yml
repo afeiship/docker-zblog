@@ -11,6 +11,14 @@ services:
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: wp123123
 
+  zblog:
+    # container_name: zblog
+    restart: always
+    image: imochen/zblog:latest
+    ports:
+      - 8080:80
+    volumes:
+      - "./zblog:/var/www/html"
   # wordpress:
   #   depends_on:
   #     - db
