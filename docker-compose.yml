@@ -6,10 +6,10 @@ services:
       - ./data/db_data:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: rt123456
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wp123123
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: zblog
+      MYSQL_USER: zblog
+      MYSQL_PASSWORD: z123123
 
   zblog:
     # container_name: zblog
