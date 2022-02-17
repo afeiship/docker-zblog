@@ -8,6 +8,16 @@
     "email": "1290657123@qq.com"
   },
   "license": "MIT",
+  "scripts": {
+    "docker-app:build": "docker build -t zblog:v1 -f docker/Dockerfile .",
+    "docker-app:run": "docker run zblog:v1",
+    "docker-compose:exec": "docker exec -it zblog_app_1 /bin/bash",
+    "docker-compose:build": "docker-compose build",
+    "docker-compose:start": "docker-compose up -d",
+    "docker-compose:stop": "docker-compose down",
+    "docker-compose:status": "docker-compose ps",
+    "docker-compose:restart": "docker-compose down && docker-compose up -d"
+  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },

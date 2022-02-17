@@ -1,12 +1,10 @@
 version: "3.3"
 services:
   web:
-    image: wodby/php-nginx
+    image: zblog:v1
+    entrypoint: ./docker/entrypoint.sh
     ports:
-      - "9002:80"
-    restart: always
-    environment:
-      - NGINX_SERVER_NAME=zblog
+      - "7001:8080"
     volumes:
       - ./app/:/var/www/html/
-      - ./templates:/etc/gotpl
+      - ./docker/entrypoint.sh:/entrypoint.sh
