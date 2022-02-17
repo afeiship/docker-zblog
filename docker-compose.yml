@@ -1,34 +1,12 @@
 version: "3.3"
 services:
-  db:
-    image: mysql:5.7
-    volumes:
-      - ./data/db_data:/var/lib/mysql
+  web:
+    image: wodby/php-nginx
+    ports:
+      - "9002:80"
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: 123456
-      MYSQL_DATABASE: zblog
-      MYSQL_USER: zblog
-      MYSQL_PASSWORD: z123123
-
-  zblog:
-    # container_name: zblog
-    restart: always
-    image: imochen/zblog:latest
-    ports:
-      - 8080:80
+      - NGINX_SERVER_NAME=zblog
     volumes:
-      - "./zblog:/var/www/html"
-  # wordpress:
-  #   depends_on:
-  #     - db
-  #   image: wordpress:latest
-  #   ports:
-  #     - "9001:80"
-  #   restart: always
-  #   environment:
-  #     WORDPRESS_DB_HOST: db:3306
-  #     WORDPRESS_DB_USER: wordpress
-  #     WORDPRESS_DB_PASSWORD: wp123123
-  #   volumes:
-  #     - ./data/wp_data/wp-content:/var/www/html/wp-content
+      - ./app/:/var/www/html/
+      - ./templates:/etc/gotpl
