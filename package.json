@@ -9,9 +9,9 @@
   },
   "license": "MIT",
   "scripts": {
-    "docker-app:build": "docker build -t zblog:v1 -f docker/Dockerfile .",
+    "docker-app:build": "docker build -t zblog:v1 -f Dockerfile .",
     "docker-app:run": "docker run zblog:v1",
-    "docker-compose:exec": "docker exec -it zblog_app_1 /bin/bash",
+    "docker-compose:exec": "docker exec -it docker-zblog_web_1 /bin/sh",
     "docker-compose:build": "docker-compose build",
     "docker-compose:start": "docker-compose up -d",
     "docker-compose:stop": "docker-compose down",
