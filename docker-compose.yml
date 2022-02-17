@@ -7,4 +7,3 @@ services:
       - "7001:8080"
     volumes:
       - ./app/:/var/www/html/
-      - ./config/php-fpm-settings.conf:/etc/php8/php-fpm.d/server.conf
