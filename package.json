@@ -21,7 +21,6 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
   },
-  "boilerplate": "docker-zblog",
   "repository": {
     "type": "git",
     "url": "https://github.com/afeiship/docker-zblog.git"
